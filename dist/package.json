@@ -1,0 +1,27 @@
+{
+  "name": "m6pos",
+  "appName": "M6门店收银系统",
+  "version": "1.0.13",
+  "description": "M6门店收银系统",
+  "author": "M6Code<535178368@qq.com>",
+  "main": "./index.html",
+  "manifestUrl": "http://shake.m6fresh.com/m6pos/releases/upgrade.json",
+  "window": {
+    "title": "M6门店收银系统",
+    "toolbar": true,
+    "width": 600,
+    "height": 480,
+    "min_width": 414,
+    "min_height": 300,
+    "resizable": true,
+    "frame": true,
+    "fullscreen": false,
+    "kiosk": false,
+    "icon": "/build/setup_resources/pos_logo.png",
+    "show_in_taskbar": true
+  },
+  "nodejs": true,
+  "js-flags": "--harmony",
+  "node-remote": "<all_urls>",
+  "backendVersion": "1.0.5"
+}
