@@ -1,0 +1,70 @@
+{
+  "code": 0,
+  "msg": "success",
+  "data": {
+    "chooseList": [
+      {
+        "c_id": 1,
+        "c_desc": "店铺类型",
+        "type": "single",
+        "list": [
+          "超市",
+          "商场",
+          "菜场"
+        ]
+      },
+      {
+        "c_id": 2,
+        "c_desc": "开店类型",
+        "type": "single",
+        "list": [
+          "新开店"
+        ]
+      },
+      {
+        "c_id": 3,
+        "c_desc": "客流情况",
+        "type": "single",
+        "list": [
+          "客流多",
+          "客流少"
+        ]
+      },
+      {
+        "c_id": 4,
+        "c_desc": "商品结构",
+        "type": "single",
+        "list": [
+          "复杂",
+          "齐全"
+        ]
+      },
+      {
+        "c_id": 5,
+        "c_desc": "出样情况",
+        "type": "single",
+        "list": [
+          "很好",
+          "较好"
+        ]
+      },
+      {
+        "c_id": 6,
+        "c_desc": "服务态度",
+        "type": "single",
+        "list": [
+          "很好",
+          "较差"
+        ]
+      },
+      {
+        "c_id": 7,
+        "c_desc": "整体布局",
+        "type": "single",
+        "list": [
+          "很好"
+        ]
+      }
+    ]
+  }
+}
