@@ -1,0 +1,127 @@
+
+  // 动画
+  .fade-enter-active, .fade-leave-active {
+    transition: all 1s;
+  }
+  .fade-enter, .fade-leave-active {
+    opacity: 0;
+    transform: translateX(300px);
+  }
+  // 动画
+  .fade3-enter, .fade3-leave-active {
+    transform: translateX(-300px);
+    opacity: 0;
+  }
+  .fade3-enter-active, .fade3-leave-active {
+    transition: all 1s;
+  }
+    // 渐隐消失
+  .fade2-enter-active, .fade2-leave-active {
+    transition: opacity 1s;
+  }
+  .fade2-leave-active {
+    opacity: 0;
+  }
+  .fade2-enter {
+    opacity: 1;
+  }
+
+  .box-shadow {
+    animation: blue-blinkingbig 1.5s ease infinite;
+  }
+  @keyframes blue-blinkingbig{
+    0%,100%{
+      box-shadow: 0 0 3px rgba(38, 162, 255, 1);
+    }
+    50%{
+      box-shadow: 0 0 20px rgba(38, 162, 255, 1);
+    }
+  }
+  @keyframes blinkingbig{
+    0%,100%{
+      box-shadow: 0 0 3px rgba(233, 239, 9, 1);
+    }
+    50%{
+      box-shadow: 0 0 20px rgba(233, 239, 9, 1);
+    }
+  }
+
+  .twinkle{
+    animation: twinkle 1.5s ease infinite;
+  }
+  @keyframes twinkle{
+    0%,100%{
+      opacity: 1;
+    }
+    50%{
+      opacity: 0.1;
+    }
+  }
+  .twinkle-big{
+    animation: twinkle2 1.5s ease infinite;
+  }
+  @keyframes twinkle2{
+    0%,100%{
+      opacity: 1;
+      transform: scale(1);
+    }
+    50%{
+      opacity: 0.3;
+      transform: scale(2);
+    }
+  }
+
+
+@keyframes fade-in {  
+  0% {opacity: 0;}/*初始状态 透明度为0*/  
+  40% {opacity: 0;}/*过渡状态 透明度为0*/  
+  100% {opacity: 1;}/*结束状态 透明度为1*/  
+}  
+.fadeIn {    
+  animation: fade-in;/*动画名称*/  
+  animation-duration: 1.5s;/*动画持续时间*/  
+}  
+
+
+@keyframes moveFromRight {
+	from { transform: translateX(100%); }
+}
+.pt-page-moveFromRight {
+
+	animation: moveFromRight .6s ease both;
+}
+
+@keyframes moveToLeft {
+	to { transform: translateX(-100%); }
+}
+.pt-page-moveToLeft {
+	animation: moveToLeft .6s ease both;
+}
+
+@keyframes moveFromBottom {
+	from { transform: translateY(100%); }
+}
+.pt-page-moveFromBottom {
+	animation: moveFromBottom .6s ease both;
+}
+
+@keyframes moveToTop {
+	to { transform: translateY(-100%); }
+}
+.pt-page-moveToTop {
+	animation: moveToTop .6s ease both;
+}
+.spin{
+  animation-name: spin;
+  animation-duration: 5000ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+@keyframes spin {
+  from {
+    transform:rotate(360deg);
+  }
+  to {
+    transform:rotate(0deg);
+  }
+}
