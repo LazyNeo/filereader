@@ -1,25 +1,40 @@
 <template>
   <ul>
     <p>{{directory}}</p>
+    <el-row>
+      <el-col :span="4">合计长度:</el-col>
+      <el-col :span="8"><em class="error-text">{{totalLength}}</em></el-col>
+    </el-row>
     <el-table
       :data="list"
       style="width: 100%">
       <el-table-column
         prop="file"
         label="文件名"
-        width="180">
+        width="80">
       </el-table-column>
       <el-table-column
-        label="孔数目"
-        width="180">
-         <template slot-scope="scope">{{scope.row.list}}</template>
+        label="孔数目">
+        <template slot-scope="scope">
+          <el-tag v-for="(item,index) of scope.row.list" :key="index">{{item}}</el-tag>
+        </template>
       </el-table-column>
       <el-table-column
         prop="sum"
+        width="80"
         label="合计">
       </el-table-column>
       <el-table-column
+        prop="other"
+        width="100"
+        label="额外长度">
+        <template slot-scope="scope">
+          <el-input v-model="scope.row.other" :step="100" type="number" placeholder="请输入内容"></el-input>
+        </template>
+      </el-table-column>
+      <el-table-column
         prop="xiekong"
+        width="180"
         label="斜孔数目">
       </el-table-column>
     </el-table>
@@ -40,7 +55,8 @@ export default {
     readdir () {
       fs.readdir(this.directory, (err, files) => {
         if (err) {
-          alert('读取失败')
+          M6.alert('读取失败', {type: 'error'})
+          console.error(err)
           return
         }
         console.log(files)
@@ -52,6 +68,9 @@ export default {
       try {
         let dataList = []
         for (const file of files) {
+          if (file.indexOf('.NC') === -1) {
+            break
+          }
           let data = fs.readFileSync(this.directory + '\\' + file, 'utf-8')
           let list = data.match(/Z-\d+\.\d?/g)
           let sum = 0
@@ -69,6 +88,7 @@ export default {
           dataList.push({
             file,
             list: dps,
+            other: 0,
             sum,
             xiekong
           })
@@ -84,6 +104,15 @@ export default {
       vm.directory = decodeURIComponent(vm.$route.params.dir)
       vm.readdir()
     })
+  },
+  computed: {
+    totalLength () {
+      let l = 0
+      for (const i of this.list) {
+        l += Number(i.sum) + Number(i.other)
+      }
+      return l
+    }
   }
 }
 </script>

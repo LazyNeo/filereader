@@ -9,18 +9,12 @@
     </keep-alive>
     <!-- </keep-alive> -->
     <loading></loading>
-    <popContainer></popContainer>
-    <div class="open-door-button" v-if="umsposFunc">
-      <i class="iconfont">&#xe6f7;</i>
-    </div>
   </div>
 </template>
 
 <script>
 import loading from './components/plugin/loading'
 import m6nav from './components/base/nav'
-import popContainer from '@/components/sync/popContainer'
-import {m6Get} from 'api/ajax'
 export default {
   name: 'index',
   data () {
@@ -34,23 +28,16 @@ export default {
   },
   components: {
     m6nav,
-    popContainer,
     loading
   },
   mounted () {
     this.umsposFunc = localConfig.comps.umspos
     this.$router.replace({name: localConfig.root})
-    m6Get('test', {}, {errorTest: true, timeout: 2000}).then(res => {
-      // console.log('localConfig.net_working')
-      localConfig.net_working = true
-      CK.doCallBack('net_working')
-    })
   }
 }
 </script>
 <style lang="less" scoped>
   .app-style{
-    overflow: hidden;
     height: 100vh;
   }
 </style>
@@ -59,7 +46,6 @@ export default {
   @import "./assets/css/common.less";
   @import "./assets/css/animation.less";
   body{
-    overflow: hidden;
     position: initial !important;
   }
   .modal{
