@@ -12,6 +12,7 @@
 
 <script>
 import fs from 'fs'
+import path from 'path'
 export default {
   data () {
     return {
@@ -40,7 +41,7 @@ export default {
       this.$router.push({
         name: 'chenshidanItem',
         params: {
-          dir: encodeURIComponent(this.directory + '\\' + item)
+          dir: encodeURIComponent(path.join(this.directory, item))
         }
       })
     }

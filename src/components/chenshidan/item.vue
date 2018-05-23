@@ -29,6 +29,7 @@
 
 <script>
 import fs from 'fs'
+import path from 'path'
 export default {
   data () {
     return {
@@ -52,7 +53,7 @@ export default {
       try {
         let dataList = []
         for (const file of files) {
-          let data = fs.readFileSync(this.directory + '\\' + file, 'utf-8')
+          let data = fs.readFileSync(path.join(this.directory, file), 'utf-8')
           let list = data.match(/Z-\d+\.\d?/g)
           let sum = 0
           let xiekong = 0
