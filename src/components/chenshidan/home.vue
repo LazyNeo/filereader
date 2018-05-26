@@ -60,7 +60,7 @@ export default {
       }
       let l = []
       for (const t of this.list) {
-        if (t.indexOf(this.filter) !== -1) {
+        if (t.startsWith(this.filter)) {
           l.push(t)
         }
       }

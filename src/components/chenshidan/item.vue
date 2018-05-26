@@ -86,6 +86,9 @@ export default {
             }
             sum += Math.ceil(num / 100) * 100
           }
+          if (sum < 500) {
+            sum = 500
+          }
           dataList.push({
             file,
             list: dps,
