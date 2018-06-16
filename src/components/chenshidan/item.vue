@@ -14,17 +14,6 @@
         width="80">
       </el-table-column>
       <el-table-column
-        label="孔数目">
-        <template slot-scope="scope">
-          <el-tag v-for="(item,index) of scope.row.list" :key="index">{{item}}</el-tag>
-        </template>
-      </el-table-column>
-      <el-table-column
-        prop="sum"
-        width="80"
-        label="合计">
-      </el-table-column>
-      <el-table-column
         prop="other"
         width="100"
         label="额外长度">
@@ -33,9 +22,15 @@
         </template>
       </el-table-column>
       <el-table-column
-        prop="xiekong"
-        width="180"
-        label="斜孔数目">
+        prop="sum"
+        width="80"
+        label="合计">
+      </el-table-column>
+      <el-table-column
+        label="孔数目">
+        <template slot-scope="scope">
+          <el-tag v-for="(item,index) of scope.row.list" :type="item | typeFilter" :key="index">{{item}}</el-tag>
+        </template>
       </el-table-column>
     </el-table>
   </ul>
@@ -50,6 +45,15 @@ export default {
     return {
       directory: '',
       list: []
+    }
+  },
+  filters: {
+    typeFilter (item) {
+      let i = Number(item)
+      if (i < 2) {
+        return 'danger'
+      }
+      return ''
     }
   },
   methods: {
@@ -70,30 +74,38 @@ export default {
         let dataList = []
         for (const file of files) {
           if (file.indexOf('.NC') === -1) {
-            break
+            continue
           }
           let data = fs.readFileSync(path.join(this.directory, file), 'utf-8')
           let list = data.match(/Z-\d+\.\d?/g)
+          let tmpSX = data.match(/Z0\. R3\.?/g)
+          let shuangxie = tmpSX ? tmpSX.length : 0
           let sum = 0
           let xiekong = 0
           let dps = []
-          for (let deep of list) {
-            let num = Number(deep.replace('Z-', ''))
-            dps.push(num)
-            if (num === 1) {
-              xiekong++
-              continue
+          if (list && list.length > 0) {
+            for (let deep of list) {
+              let num = Number(deep.replace('Z-', ''))
+              dps.push(num)
+              if (num === 1) {
+                xiekong++
+                continue
+              }
+              sum += Math.ceil(num / 100) * 100
             }
-            sum += Math.ceil(num / 100) * 100
           }
           if (sum < 500) {
             sum = 500
+          }
+          for (let i = 0; i < shuangxie; i++) {
+            dps.push(0)
           }
           dataList.push({
             file,
             list: dps,
             other: 0,
             sum,
+            shuangxie,
             xiekong
           })
         }
