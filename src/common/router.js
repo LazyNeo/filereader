@@ -1,5 +1,3 @@
-import {umsposRouter} from './router/umspos'
-import {posRouter} from './router/pos'
 export const routes = [
   {
   	path: '/',
@@ -22,77 +20,6 @@ export const routes = [
         component:  r => require.ensure([], () => r(require('src/components/chenshidan/item')), 'group-sync')
       }
     ]
-  },
-  {
-  	path: '/admin/login',
-    name: 'adminLogin',
-    component: r => require.ensure([], () => r(require('src/components/login')), 'group-base'),
-    meta: {
-      // 标记不需要登陆
-      notRequiresAuth: true
-    }
-  },
-  {
-  	path: '/admin/autoLogin',
-    name: 'adminAutoLogin',
-    component: r => require.ensure([], () => r(require('src/components/autoLogin')), 'group-base'),
-    meta: {
-      // 标记不需要登陆
-      notRequiresAuth: true
-    }
-  },
-  {
-  	path: '/set',
-    name: 'setHome',
-    component: r => require.ensure([], () => r(require('src/components/set/home')), 'set-base'),
-    meta: {
-      // 标记不需要登陆
-      notRequiresAuth: true
-    }
-  },
-  {
-  	path: '/home',
-    name: 'generalHome',
-    component: r => require.ensure([], () => r(require('src/components/home')), 'group-base'),
-    meta: {
-      // 标记不需要登陆
-      notRequiresAuth: true
-    }
-  },
-  {
-  	path: '/submit',
-    name: 'submitAuth',
-    component: r => require.ensure([], () => r(require('src/components/submit')), 'group-base'),
-    meta: {
-      // 标记不需要登陆
-      notRequiresAuth: true
-    }
-  },
-  {
-    path: '/plugin/alert',
-    name: 'pluginAlert',
-    component: r => require.ensure([], () => r(require('src/components/plugin/alert')), 'group-base-outer'),
-    meta: {
-      notRequiresAuth: true
-    }
-  },
-  {
-    path: '/plugin/confirm',
-    name: 'pluginConfirm',
-    component: r => require.ensure([], () => r(require('src/components/plugin/confirm')), 'group-base-outer'),
-    meta: {
-      notRequiresAuth: true
-    }
-  },
-  // ...feedRouter,
-  // ...feedAdminRouter,
-  {
-    path: '/hint',
-    name: 'hint',
-    component: r => require.ensure([], () => r(require('src/components/hint')), 'group-base-outer'),
-    meta: {
-      notRequiresAuth: true
-    }
   },
   {
     path: '/error',

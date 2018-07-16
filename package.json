@@ -1,10 +1,10 @@
 {
-  "name": "m6pos",
-  "appName": "M6门店收银系统",
+  "name": "filereader",
+  "appName": "filereader",
   "version": "1.0.13",
   "backendVersion": "1.0.5",
-  "description": "M6门店收银系统",
-  "author": "M6Code<535178368@qq.com>",
+  "description": "filereader",
+  "author": "neo<535178368@qq.com>",
   "private": true,
   "scripts": {
     "dev": "node build/dev-server.js",
@@ -132,7 +132,7 @@
   "main": "http://localhost:8099",
   "manifestUrl": "http://shake.m6fresh.com/m6pos/releases/upgrade.json",
   "window": {
-    "title": "M6门店收银系统",
+    "title": "filereader",
     "toolbar": true,
     "width": 600,
     "height": 480,
